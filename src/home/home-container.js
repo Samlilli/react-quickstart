@@ -21,7 +21,6 @@ class HomeContainer extends React.Component {
     render() {
         return (
             <div>
-              {this.props.brand}
               <LocationsSidebar/>
             </div>
         );
