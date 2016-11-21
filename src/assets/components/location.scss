@@ -1,0 +1,14 @@
+.container {
+  color: white;
+  font-size: 1.25rem;
+  padding: 1.25rem;
+  border-bottom: 1px solid gray;
+}
+
+.link {
+  text-decoration: none;
+  display: block;
+  &:hover {
+    background-color: grey;
+  }
+}

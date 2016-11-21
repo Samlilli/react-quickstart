@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'DIN';
+  src:  url('../fonts/DIN/DIN_regular.woff') format('woff'),
+        url('../fonts/DIN/DIN_regular.eot') format('eot');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DIN';
+  src:  url('../fonts/DIN/DIN_bold.woff') format('woff'),
+        url('../fonts/DIN/DIN_bold.eot') format('eot');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DIN';
+  src:  url('../fonts/DIN/DIN_light.woff') format('woff'),
+        url('../fonts/DIN/DIN_light.eot') format('eot');
+  font-weight: lighter;
+  font-style: normal;
+}
+
+$base-font-size: 14px;
+$base-line-height: 1.4;
+
+$body-font: 'DIN', Arial, Helvetica, sans-serif;
+$heading-font: 'DIN', Arial, Helvetica, sans-serif;
+$icon-font: 'Flaticon';

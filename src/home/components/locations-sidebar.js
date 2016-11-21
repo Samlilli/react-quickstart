@@ -1,23 +1,31 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import Location from './location';
 
-import myButton from '../../assets/objects/buttons.scss'
+import locationSidebar from '../../assets/components/location-sidebar.scss'
+import buttons from '../../assets/objects/buttons.scss'
 
 // import styles from '../assets/home.css'
 
-export default class MyChildComponent extends React.Component {
+export default class LocationsSidebar extends React.Component {
 
     constructor(props) {
       super(props);
     }
 
+    _renderLocations = () => {
+      return <Location />
+    }
+
     render() {
         return (
-            <div className={myButton.myButton}>
-              <a href="www.google.com">
-                Go to Google!
-              </a>
+          <div className={locationSidebar.container}>
+            <div className={locationSidebar.options}>
+              Locations
+              <a href="#" className={buttons.default}>+</a>
             </div>
+            {this._renderLocations()}
+          </div>
         );
     }
 }
