@@ -15,7 +15,7 @@ export default class MyChildComponent extends React.Component {
         return (
             <div className={myButton.myButton}>
               <a href="www.google.com">
-                Alright there son. Looks like you had to capitalise the component name
+                Go to Google!
               </a>
             </div>
         );
