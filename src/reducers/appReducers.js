@@ -17,11 +17,12 @@ export function weather (state = initialState, action) {
       return state
     case ADD_USER_LOCATION:
       {
-        let updatedLocations = state.locations
-        updatedLocations.push(action.payload)
+        let newLocation = Object.assign({}, action.payload)
+        let storedLocations = state.locations
+        storedLocations.push(newLocation)
 
         let nextState = Object.assign({}, state, {
-          locations: updatedLocations
+          locations: storedLocations
         })
         return nextState;
       }

@@ -28,11 +28,10 @@ export default class LocationsSidebar extends React.Component {
 
     _renderLocations = () => {
       var locations = this.props.locations;
-      return locations.map((location, i) => {
+      return locations.map((locationData, i) => {
         return (
           <Location
-            location={location}
-            getWeather={this.props.onGetWeather}
+            locationData={locationData}
             key={i}
           />
         )

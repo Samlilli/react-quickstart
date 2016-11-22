@@ -23,9 +23,21 @@ export function getWeather (location = 'Brighton') {
 }
 
 export const ADD_USER_LOCATION = 'ADD_USER_LOCATION'
+
 export function addUserLocation (location) {
-  return {
-    type: ADD_USER_LOCATION,
-    payload: location
+  return (dispatch, getState) => {
+    fetch('https://api.apixu.com/v1/current.json?key=a1e04779bd2a4ebb96f160346162111&q=' + location)
+    .then(function(response) {
+      return response.json()
+    }).then(res => {
+      dispatch({
+          type: ADD_USER_LOCATION,
+          payload: {
+            location: location,
+            locationDetails: res.location,
+            currentWeather: res.current
+          }
+      });
+    })
   }
 }
