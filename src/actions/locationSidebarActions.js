@@ -21,3 +21,11 @@ export function getWeather (location = 'Brighton') {
     })
   };
 }
+
+export const ADD_USER_LOCATION = 'ADD_USER_LOCATION'
+export function addUserLocation (location) {
+  return {
+    type: ADD_USER_LOCATION,
+    payload: location
+  }
+}

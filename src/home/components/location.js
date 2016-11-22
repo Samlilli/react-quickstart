@@ -11,11 +11,25 @@ export default class Location extends React.Component {
       super(props);
     }
 
+    static propTypes = {
+      getWeather: PropTypes.func.isRequired,
+      location: PropTypes.string.isRequired
+    }
+
+    componentWillMount() {
+      const { getWeather } = this.props;
+      getWeather(location);
+    }
+
+    static propTypes = {
+      location: PropTypes.string.isRequired
+    }
+
     render() {
         return (
           <a className={locationStyles.link} href="#">
             <div className={locationStyles.container}>
-              Brighton UK
+              {this.props.location}
             </div>
           </a>
         );
