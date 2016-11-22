@@ -1,0 +1,29 @@
+.text-bold {
+  font-weight: bold;
+}
+
+.text-normal {
+  font-weight: normal;
+}
+
+.text-light {
+  font-weight: 100;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-noleading {
+  line-height: 1;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

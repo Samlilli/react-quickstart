@@ -1,14 +1,50 @@
 .container {
-  color: white;
+  color: white;;
   font-size: 1.25rem;
+  border-radius: 4px;
   padding: 1.25rem;
-  border-bottom: 1px solid gray;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: white;
+  font-size: 1rem;
 }
 
 .link {
   text-decoration: none;
   display: block;
   &:hover {
-    background-color: grey;
+    background-color: #383838;
   }
+}
+
+
+.coldest {
+  color: #00a9ff;
+}
+
+.colder {
+  color: #00fbff;
+}
+
+.cold {
+  color: #00ffc8;
+}
+
+.mild {
+  color: #00ff00;
+}
+
+.warm {
+  color: #f7ff00;
+}
+
+.warmer {
+  color: #ff9d00;
+}
+
+.warmest {
+  color: #ff4b00;
 }

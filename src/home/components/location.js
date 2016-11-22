@@ -15,14 +15,40 @@ export default class Location extends React.Component {
       locationData: PropTypes.object.isRequired
     }
 
+    _applyTemperatureClass = (temp) => {
+      if(temp < 0){
+        return locationStyles.coldest
+      }
+      if(temp <= 10){
+        return locationStyles.colder
+      }
+      if(temp <= 15) {
+        return locationStyles.cold
+      }
+      if(temp <= 20) {
+        return locationStyles.mild
+      }
+      if(temp <= 25) {
+        return locationStyles.warm
+      }
+      if(temp <= 30) {
+        return locationStyles.warmer
+      }
+      if(temp <= 35) {
+        return locationStyles.warmest
+      }
+    }
+
     render() {
         let { location, locationDetails, currentWeather} = this.props.locationData;
 
         return (
           <a className={locationStyles.link} href="#">
             <div className={locationStyles.container}>
-              <p>{location}</p>
-              <em>{currentWeather.temp_c}c</em>
+              <p className={locationStyles.title}>{location}</p>
+              <em className={this._applyTemperatureClass(currentWeather.temp_c)}>
+                {currentWeather.temp_c}<small>&deg;c</small>
+              </em>
             </div>
           </a>
         );

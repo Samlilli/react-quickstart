@@ -1,4 +1,5 @@
 @import '../settings/typography.scss';
+@import '../helpers/_helpers.all.scss';
 
 body {
   text-rendering: optimizeLegibility;
@@ -10,6 +11,6 @@ body {
   font-size: $base-font-size;
   line-height: $base-line-height;
 
-  background: $brand-crisp-blue;
-  color: $text-colour;
+  background-color: #080808;
+
 }

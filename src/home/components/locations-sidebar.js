@@ -55,10 +55,12 @@ export default class LocationsSidebar extends React.Component {
     render() {
         return (
           <div className={locationSidebar.container}>
-            <div className={locationSidebar.options}>
-              Locations
-              <input type="text" placeholder="Add location" value={this.state.newLocation} onChange={this._handleChange} />
-              <a href="#" className={buttons.default} onClick={e => this.props.onAddUserLocation(this.state.newLocation)}>+</a>
+            <div className={locationSidebar.titleBar}>
+              <h4 className={locationSidebar.title}>My Locations</h4>
+            </div>
+            <div className={locationSidebar.addLocationContainer}>
+              <input type="text" className={locationSidebar.addLocationInput} placeholder="Add location" value={this.state.newLocation} onChange={this._handleChange} />
+              <a href="#" className={locationSidebar.addLocationBtn} onClick={e => this.props.onAddUserLocation(this.state.newLocation)}>+</a>
             </div>
             {this._renderLocations()}
           </div>

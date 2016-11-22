@@ -5,7 +5,8 @@ import { getWeather, addUserLocation } from '../actions/locationSidebarActions'
 
 import LocationsSidebar from './components/locations-sidebar';
 
-import GenericStyles from '../assets/generic/_generic.all.scss'
+import GenericStyles from '../assets/generic/_generic.all.scss';
+import GlobalStyles from '../assets/base/globals.scss';
 
 class HomeContainer extends React.Component {
 
