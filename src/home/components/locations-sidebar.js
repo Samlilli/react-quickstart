@@ -5,8 +5,6 @@ import Location from './location';
 import locationSidebar from '../../assets/components/location-sidebar.scss'
 import buttons from '../../assets/objects/buttons.scss'
 
-// import styles from '../assets/home.css'
-
 export default class LocationsSidebar extends React.Component {
 
     constructor(props) {
@@ -19,7 +17,8 @@ export default class LocationsSidebar extends React.Component {
     static propTypes = {
       onGetWeather: PropTypes.func.isRequired,
       onAddUserLocation: PropTypes.func.isRequired,
-      locations: PropTypes.array
+      locations: PropTypes.array,
+      errors: PropTypes.object
     }
 
     _handleChange = (e) => {
@@ -32,25 +31,12 @@ export default class LocationsSidebar extends React.Component {
         return (
           <Location
             locationData={locationData}
+            refreshWeather={this.props.onGetWeather}
             key={i}
           />
         )
       })
     }
-
-
-
-    // _renderNewLocation = () => {
-    //   var locations = this.state.locations
-    //   locations.push(
-    //     <Location
-    //       location={this.state.newLocation}
-    //       getWeather={this.props.getWeather}
-    //       key={i}
-    //     />
-    //   )
-    //   this.setState({locations: locations})
-    // }
 
     render() {
         return (
@@ -61,6 +47,7 @@ export default class LocationsSidebar extends React.Component {
             <div className={locationSidebar.addLocationContainer}>
               <input type="text" className={locationSidebar.addLocationInput} placeholder="Add location" value={this.state.newLocation} onChange={this._handleChange} />
               <a href="#" className={locationSidebar.addLocationBtn} onClick={e => this.props.onAddUserLocation(this.state.newLocation)}>+</a>
+              {this.props.errors && <p className={locationSidebar.title}>{this.props.errors.message}</p>}
             </div>
             {this._renderLocations()}
           </div>

@@ -14,18 +14,15 @@ class HomeContainer extends React.Component {
       super(props);
     }
 
-    componentWillMount() {
-      const { getWeather } = this.props;
-      getWeather('Brighton');
-    }
-
     render() {
+      let { addUserLocation, getWeather, weather, errors } = this.props;
         return (
             <div>
               <LocationsSidebar
-                onAddUserLocation={this.props.addUserLocation}
-                onGetWeather={this.props.getWeather}
-                locations={this.props.weather.locations}
+                onAddUserLocation={addUserLocation}
+                onGetWeather={getWeather}
+                locations={weather.locations}
+                errors={errors}
               />
             </div>
         );
@@ -34,7 +31,8 @@ class HomeContainer extends React.Component {
 
 export default connect((state) => ({
   // State
-  weather: state.weather
+  weather: state.weather,
+  errors: state.errors
 }), {
   // Actions
   addUserLocation,

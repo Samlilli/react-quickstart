@@ -11,30 +11,36 @@ export default class Location extends React.Component {
       super(props);
     }
 
+    componentWillMount(){
+      // let { refreshWeather, locationData } = this.props;
+      // refreshWeather(locationData.location);
+    }
+
     static propTypes = {
-      locationData: PropTypes.object.isRequired
+      locationData: PropTypes.object.isRequired,
+      refreshWeather: PropTypes.func.isRequired
     }
 
     _applyTemperatureClass = (temp) => {
       if(temp < 0){
         return locationStyles.coldest
       }
-      if(temp <= 10){
+      if(temp <= 5){
         return locationStyles.colder
       }
-      if(temp <= 15) {
+      if(temp <= 10) {
         return locationStyles.cold
       }
-      if(temp <= 20) {
+      if(temp <= 15) {
         return locationStyles.mild
       }
-      if(temp <= 25) {
+      if(temp <= 20) {
         return locationStyles.warm
       }
-      if(temp <= 30) {
+      if(temp <= 25) {
         return locationStyles.warmer
       }
-      if(temp <= 35) {
+      if(temp <= 30) {
         return locationStyles.warmest
       }
     }
