@@ -18,7 +18,8 @@ export default class LocationsSidebar extends React.Component {
       onGetWeather: PropTypes.func.isRequired,
       onAddUserLocation: PropTypes.func.isRequired,
       locations: PropTypes.array,
-      errors: PropTypes.object
+      errors: PropTypes.object,
+      resetErrors: PropTypes.func
     }
 
     _handleChange = (e) => {
@@ -39,6 +40,7 @@ export default class LocationsSidebar extends React.Component {
     }
 
     render() {
+      let { errors } = this.props;
         return (
           <div className={locationSidebar.container}>
             <div className={locationSidebar.titleBar}>
@@ -47,7 +49,7 @@ export default class LocationsSidebar extends React.Component {
             <div className={locationSidebar.addLocationContainer}>
               <input type="text" className={locationSidebar.addLocationInput} placeholder="Add location" value={this.state.newLocation} onChange={this._handleChange} />
               <a href="#" className={locationSidebar.addLocationBtn} onClick={e => this.props.onAddUserLocation(this.state.newLocation)}>+</a>
-              {this.props.errors && <p className={locationSidebar.title}>{this.props.errors.message}</p>}
+              {errors.addLocationFailed && <p className={locationSidebar.title}>{errors.addLocationFailed.message} <button onClick={e => this.props.resetErrors()}>OK</button></p>}
             </div>
             {this._renderLocations()}
           </div>

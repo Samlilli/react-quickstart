@@ -12,8 +12,8 @@ export default class Location extends React.Component {
     }
 
     componentWillMount(){
-      // let { refreshWeather, locationData } = this.props;
-      // refreshWeather(locationData.location);
+      let { refreshWeather, locationData } = this.props;
+      refreshWeather(locationData.locationName);
     }
 
     static propTypes = {
@@ -40,20 +40,20 @@ export default class Location extends React.Component {
       if(temp <= 25) {
         return locationStyles.warmer
       }
-      if(temp <= 30) {
+      if(temp >= 30) {
         return locationStyles.warmest
       }
     }
 
     render() {
-        let { location, locationDetails, currentWeather} = this.props.locationData;
+        let { locationName, location, current} = this.props.locationData;
 
         return (
           <a className={locationStyles.link} href="#">
             <div className={locationStyles.container}>
-              <p className={locationStyles.title}>{location}</p>
-              <em className={this._applyTemperatureClass(currentWeather.temp_c)}>
-                {currentWeather.temp_c}<small>&deg;c</small>
+              <p className={locationStyles.title}>{locationName}</p>
+              <em className={this._applyTemperatureClass(current.temp_c)}>
+                {current.temp_c}<small>&deg;c</small>
               </em>
             </div>
           </a>

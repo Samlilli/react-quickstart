@@ -11,18 +11,31 @@ export function getWeather (location) {
     .then(function(response) {
       return response.json()
     }).then(function(res) {
+
+        let state = getState();
+        // create new state I can modify
+        let stateToManipulate = Object.assign({}, state, {})
+        // return a new state with the old weather object removed
+        let nextLocations = stateToManipulate.weather.locations.filter(obj => {
+          return obj.locationName !== location
+        })
+        // Grab the updated location and assign it
+        let updatedLocation = res;
+        updatedLocation.locationName = location;
+        nextLocations.push(updatedLocation)
+
+        return nextLocations
+    }).then(function(nextLocations) {
       dispatch({
         type: GET_WEATHER_SUCCESS,
         payload: {
-          location: location,
-          locationDetails: res.location,
-          currentWeather: res.current
+          locations: nextLocations
         }
       });
     }).catch(function(err) {
       dispatch({
         type: GET_WEATHER_FAILED,
-        payload: 'Weather not found'
+        payload: 'Weather not found: ' + err
       });
     })
   };
@@ -47,9 +60,9 @@ export function addUserLocation (location) {
         dispatch({
             type: ADD_USER_LOCATION_SUCCESS,
             payload: {
-              location: location,
-              locationDetails: res.location,
-              currentWeather: res.current
+              locationName: location,
+              location: res.location,
+              current: res.current
             }
         });
       }
@@ -60,5 +73,14 @@ export function addUserLocation (location) {
         payload: err
       });
     })
+  }
+}
+
+export const REMOVE_USER_LOCATION_SUCCESS = 'REMOVE_USER_LOCATION_SUCCESS'
+
+export function removeUserLocation (location) {
+  return {
+    type: REMOVE_USER_LOCATION_SUCCESS,
+    payload: location
   }
 }

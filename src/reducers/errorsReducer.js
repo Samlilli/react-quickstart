@@ -10,7 +10,7 @@ const initialState = {
 export function errors (state = initialState, action = {}) {
   switch (action.type) {
     case RESET_ERRORS: {
-      let nextState = Object.assign({}, state, {})
+      let nextState = {}
       return nextState
     }
     case ADD_USER_LOCATION_FAILED:

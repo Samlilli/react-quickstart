@@ -13,9 +13,7 @@ createStoreWithMiddleware = compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )(createStore)
 
-console.log(reducers)
 const combinedReducers = storage.reducer(combineReducers(reducers))
-
 const store = createStoreWithMiddleware(combinedReducers)
 const load = storage.createLoader(engine)
 load(store)

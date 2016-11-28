@@ -6,22 +6,24 @@ import {
     GET_WEATHER_SUCCESS,
     GET_WEATHER_FAILED,
     ADD_USER_LOCATION_SUCCESS,
-    ADD_USER_LOCATION_FAILED
+    ADD_USER_LOCATION_FAILED,
+    REMOVE_USER_LOCATION_SUCCESS
 } from '../actions/locationSidebarActions'
 
 export function weather (state = initialState, action = {}) {
   switch (action.type) {
     case GET_WEATHER_SUCCESS:
+
       let nextState = Object.assign({}, state, {
-        location: action.payload.location,
-        currentWeather: action.payload.current
-      });
+        locations: action.payload.locations
+      })
+
       return nextState;
     case GET_WEATHER_FAILED:
       return state
     case ADD_USER_LOCATION_SUCCESS:
       {
-        let newLocation = Object.assign({}, action.payload)
+        let newLocation = action.payload
         let storedLocations = state.locations
         storedLocations.push(newLocation)
 
@@ -29,6 +31,15 @@ export function weather (state = initialState, action = {}) {
           locations: storedLocations
         })
         return nextState;
+      }
+    case REMOVE_USER_LOCATION_SUCCESS:
+      {
+        // create new state I can fuck with and modify
+        let stateIcanFuckWith = Object.assign({}, state, {})
+        // return a new state with the old weather object removed
+        let nextState = stateIcanFuckWith.locations.filter(obj => {
+          return obj.location !== action.payload.location
+        })
       }
     default:
       return state
