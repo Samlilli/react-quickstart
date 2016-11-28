@@ -23,23 +23,17 @@ export function weather (state = initialState, action = {}) {
       return state
     case ADD_USER_LOCATION_SUCCESS:
       {
-        let newLocation = action.payload
-        let storedLocations = state.locations
-        storedLocations.push(newLocation)
-
         let nextState = Object.assign({}, state, {
-          locations: storedLocations
+          locations: action.payload.locations
         })
         return nextState;
       }
     case REMOVE_USER_LOCATION_SUCCESS:
       {
-        // create new state I can fuck with and modify
-        let stateIcanFuckWith = Object.assign({}, state, {})
-        // return a new state with the old weather object removed
-        let nextState = stateIcanFuckWith.locations.filter(obj => {
-          return obj.location !== action.payload.location
+        let nextState = Object.assign({}, state, {
+          locations: action.payload.locations
         })
+        return nextState
       }
     default:
       return state

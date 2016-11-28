@@ -17,6 +17,7 @@ export default class LocationsSidebar extends React.Component {
     static propTypes = {
       onGetWeather: PropTypes.func.isRequired,
       onAddUserLocation: PropTypes.func.isRequired,
+      onDeleteUserLocation: PropTypes.func.isRequired,
       locations: PropTypes.array,
       errors: PropTypes.object,
       resetErrors: PropTypes.func
@@ -33,6 +34,7 @@ export default class LocationsSidebar extends React.Component {
           <Location
             locationData={locationData}
             refreshWeather={this.props.onGetWeather}
+            deleteUserLocation={this.props.onDeleteUserLocation}
             key={i}
           />
         )

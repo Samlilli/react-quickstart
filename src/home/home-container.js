@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router';
-import { getWeather, addUserLocation } from '../actions/locationSidebarActions'
+import { getWeather, addUserLocation, deleteUserLocation } from '../actions/locationSidebarActions'
 import { resetErrors } from '../actions/errorActions'
 
 import LocationsSidebar from './components/locations-sidebar';
@@ -16,11 +16,12 @@ class HomeContainer extends React.Component {
     }
 
     render() {
-      let { addUserLocation, getWeather, weather, errors, resetErrors } = this.props;
+      let { addUserLocation, getWeather, weather, errors, resetErrors, deleteUserLocation } = this.props;
         return (
             <div>
               <LocationsSidebar
                 onAddUserLocation={addUserLocation}
+                onDeleteUserLocation={deleteUserLocation}
                 onGetWeather={getWeather}
                 locations={weather.locations}
                 errors={errors}
@@ -39,5 +40,6 @@ export default connect((state) => ({
   // Actions
   resetErrors,
   addUserLocation,
+  deleteUserLocation,
   getWeather
 })(HomeContainer)

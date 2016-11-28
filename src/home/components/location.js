@@ -18,7 +18,8 @@ export default class Location extends React.Component {
 
     static propTypes = {
       locationData: PropTypes.object.isRequired,
-      refreshWeather: PropTypes.func.isRequired
+      refreshWeather: PropTypes.func.isRequired,
+      deleteUserLocation: PropTypes.func.isRequired
     }
 
     _applyTemperatureClass = (temp) => {
@@ -55,6 +56,7 @@ export default class Location extends React.Component {
               <em className={this._applyTemperatureClass(current.temp_c)}>
                 {current.temp_c}<small>&deg;c</small>
               </em>
+              <button onClick={e => this.props.deleteUserLocation(locationName)}>Delete</button>
             </div>
           </a>
         );

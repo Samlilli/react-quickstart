@@ -57,15 +57,24 @@ export function addUserLocation (location) {
           payload: res.error
         });
       } else {
-        dispatch({
-            type: ADD_USER_LOCATION_SUCCESS,
-            payload: {
-              locationName: location,
-              location: res.location,
-              current: res.current
-            }
-        });
+        let newLocation = {
+          locationName: location,
+          location: res.location,
+          current: res.current
+        }
+        let state = getState();
+        let storedLocations = state.weather.locations
+        storedLocations.push(newLocation)
+
+        return storedLocations
       }
+    }).then(locations => {
+      dispatch({
+          type: ADD_USER_LOCATION_SUCCESS,
+          payload: {
+            locations: locations
+          }
+      });
     })
     .catch((err) => {
       dispatch({
@@ -76,11 +85,22 @@ export function addUserLocation (location) {
   }
 }
 
+
 export const REMOVE_USER_LOCATION_SUCCESS = 'REMOVE_USER_LOCATION_SUCCESS'
 
-export function removeUserLocation (location) {
-  return {
-    type: REMOVE_USER_LOCATION_SUCCESS,
-    payload: location
+export function deleteUserLocation (location) {
+  return (dispatch, getState) => {
+    console.log(location)
+    let state = getState();
+    let stateToManipulate = Object.assign({}, state, {})
+    let locations = stateToManipulate.weather.locations.filter(obj => {
+      return obj.locationName !== location
+    })
+    dispatch({
+      type: REMOVE_USER_LOCATION_SUCCESS,
+      payload: {
+        locations: locations
+      }
+    })
   }
 }
